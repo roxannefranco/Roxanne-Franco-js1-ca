@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/miligram.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Home</title>
-  </head>
-  <body>
-    <!--logo-->
-    <h1>Rocktails Bar</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/miligram.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Home</title>
+</head>
+
+<body>
+  <!--logo-->
+  <main class="center">
+    <header>
+      <h1>Rocktails Bar</h1>
+      <nav>
+        <a class="button" href="index.html">Home</a>
+        <a class="button" href="contact.html">Contact</a>
+      </nav>
+    </header>
     <!--letter search-->
     <div id="letter-search">
       <a href="index.html?letter=a" class="button">A</a>
     </div>
     <!--cocktails list-->
-    <ul id="cocktails"></ul>
+    <div id="cocktails">
+      <table>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--javascript content-->
+        </tbody>
+      </table>
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
     <script src="js/home.js"></script>
-  </body>
+</body>
+</main>
+
 </html>

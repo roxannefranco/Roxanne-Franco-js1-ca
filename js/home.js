@@ -1,8 +1,7 @@
-// API variables
+// API variable
 const url = "https://thecocktaildb.com/api/json/v1/1";
 
 // Add letters to search buttons
-
 const letters = [
   "A",
   "B",
@@ -46,21 +45,28 @@ async function getAllByFirstLetter(letter) {
   const response = await fetch(`${url}/search.php?f=${letter}`);
   const data = await response.json();
 
+  // Remove loading indicator after fetch is done
+  const loading = document.querySelector(".lds-ring");
+  loading.remove();
+
+  const cocktailsList = document.querySelector("#cocktails tbody");
   if (data.drinks != null) {
     let drinks = "";
     for (let i = 0; i < data.drinks.length; i++) {
       const drink = data.drinks[i];
-      drinks += `<li>
-      <img width="100px" src="${drink.strDrinkThumb}"/>
-        ${drink.strDrink}
-        ${drink.strCategory}
-        ${drink.strAlcoholic}
-        <a class="button" href="details.html?id=${drink.idDrink}">Details</a>
-      </li>`;
+      drinks += `<tr>
+      <td><img width="100px" src="${drink.strDrinkThumb}"/></td>
+        <td>${drink.strDrink}</td>
+        <td>${drink.strCategory}</td>
+        <td>${drink.strAlcoholic}</td>
+        <td><a class="button" href="details.html?id=${drink.idDrink}">Details</a></td>
+      </tr>`;
     }
 
-    const cocktailsList = document.querySelector("#cocktails");
     cocktailsList.innerHTML = drinks;
+  } else {
+    // empty td tags as placeholder for empty results
+    cocktailsList.innerHTML = "<tr><td>No drinks with this letter.</td><td></td><td></td><td></td><td></td></tr>";
   }
 }
 
