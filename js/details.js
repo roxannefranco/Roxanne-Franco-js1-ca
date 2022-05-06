@@ -19,13 +19,24 @@ async function getSingleCocktail(id) {
 
   const drink = data.drinks[0];
 
+  // separate ingredients with comma
+  let ingredients = "";
+  for (let i = 1; i <= 15; i++) {
+    if (drink["strIngredient" + i] != null) {
+      ingredients += drink["strIngredient" + i] + ", ";
+    }
+  }
+  // remove unnecessary comma and space
+  ingredients = ingredients.slice(0, -2);
+
   const content = `
-    <li><img width="400px" src="${drink.strDrinkThumb}"/></li>
-    <li>${drink.strDrink}</li>
-    <li>${drink.strCategory}</li>
-    <li>${drink.strAlcoholic}</li>
-    <li>${drink.strGlass}</li>
-    <li>${drink.strInstructions}</li>`;
+    <img width="400px" src="${drink.strDrinkThumb}"/>
+    <h2>${drink.strDrink}</h2>
+    <div><strong>Category:</strong> ${drink.strCategory}</div>
+    <div><strong>Type:</strong> ${drink.strAlcoholic}</div>
+    <div><strong>Glass:</strong> ${drink.strGlass}</div>
+    <div><strong>Instructions:</strong> ${drink.strInstructions}</div>
+    <div><strong>Ingredients:</strong> ${ingredients}</div>`;
 
   const detailsDrink = document.querySelector("#single-cocktail");
   detailsDrink.innerHTML = content;
