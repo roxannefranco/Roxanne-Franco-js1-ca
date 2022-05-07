@@ -42,31 +42,37 @@ letterSearch.innerHTML = content;
 
 // Obtain cocktails by first letter
 async function getAllByFirstLetter(letter) {
-  const response = await fetch(`${url}/search.php?f=${letter}`);
-  const data = await response.json();
-
-  // Remove loading indicator after fetch is done
-  const loading = document.querySelector(".lds-ring");
-  loading.remove();
-
   const cocktailsList = document.querySelector("#cocktails tbody");
-  if (data.drinks != null) {
-    let drinks = "";
-    for (let i = 0; i < data.drinks.length; i++) {
-      const drink = data.drinks[i];
-      drinks += `<tr>
+  const loading = document.querySelector(".lds-ring");
+  try {
+    const response = await fetch(`${url}/search.php?f=${letter}`);
+    const data = await response.json();
+
+    // Remove loading indicator after fetch is done
+    loading.remove();
+
+    if (data.drinks != null) {
+      let drinks = "";
+      for (let i = 0; i < data.drinks.length; i++) {
+        const drink = data.drinks[i];
+        drinks += `<tr>
       <td><img width="100px" src="${drink.strDrinkThumb}"/></td>
         <td>${drink.strDrink}</td>
         <td>${drink.strCategory}</td>
         <td>${drink.strAlcoholic}</td>
         <td><a class="button" href="details.html?id=${drink.idDrink}">Details</a></td>
       </tr>`;
-    }
+      }
 
-    cocktailsList.innerHTML = drinks;
-  } else {
-    // empty td tags as placeholder for empty results
-    cocktailsList.innerHTML = "<tr><td>No drinks with this letter.</td><td></td><td></td><td></td><td></td></tr>";
+      cocktailsList.innerHTML = drinks;
+    } else {
+      // empty td tags as placeholder for empty results
+      cocktailsList.innerHTML = "<tr><td>No drinks with this letter.</td><td></td><td></td><td></td><td></td></tr>";
+    }
+  } catch (e) {
+    cocktailsList.innerHTML = "<tr><td>Unknown error. Try again later.</td><td></td><td></td><td></td><td></td></tr>";
+    // Remove loading indicator after fetch is done
+    loading.remove();
   }
 }
 

@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/miligram.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>Contact</title>
-</head>
-
-<body>
-  <main class="center">
-    <header>
-      <h1>🍷Rocktails Bar</h1>
-      <nav>
-        <a class="button button-clear" href="index.html">Home</a>
-        <a class="button button-clear" href="contact.html">Contact</a>
-      </nav>
-    </header>
-    <h2>Contact</h2>
-    <form>
-      <div class="input-row">
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Subject" />
-        <input type="email" placeholder="Email" />
-        <input type="text" placeholder="Address" />
-      </div>
-    </form>
-    <a href="contact.html" class="button">Submit</a>
-</body>
-</main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/miligram.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Contact</title>
+  </head>
+  <body>
+    <main class="center">
+      <header>
+        <h1>🍷Rocktails Bar</h1>
+        <nav>
+          <a class="button button-clear" href="index.html">Home</a>
+          <a class="button button-clear" href="contact.html">Contact</a>
+        </nav>
+      </header>
+      <h2>Contact</h2>
+      <div id="success"></div>
+      <form id="contact-form">
+        <input id="name" type="text" name="name" placeholder="Name" />
+        <input id="subject" type="text" name="subject" placeholder="Subject" />
+        <input id="email" type="email" name="email" placeholder="Email" />
+        <input id="address" type="text" name="address" placeholder="Address" />
+        <button type="submit" class="button">Submit</button>
+      </form>
+      <ul id="errors"></ul>
+    </main>
+    <script src="js/contact.js"></script>
+  </body>
 </html>
